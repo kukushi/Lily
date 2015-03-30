@@ -10,6 +10,9 @@
 		52D138881AC59D9900B83A6C /* Lily.h in Headers */ = {isa = PBXBuildFile; fileRef = 52D138871AC59D9900B83A6C /* Lily.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52D1388E1AC59D9900B83A6C /* Lily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D138821AC59D9900B83A6C /* Lily.framework */; };
 		52D138951AC59D9900B83A6C /* LilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D138941AC59D9900B83A6C /* LilyTests.swift */; };
+		52D1389F1AC59DBF00B83A6C /* Lily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1389E1AC59DBF00B83A6C /* Lily.swift */; };
+		52D138A21AC59E8000B83A6C /* NSCache+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D138A11AC59E8000B83A6C /* NSCache+Ex.swift */; };
+		52D138A41AC59FEB00B83A6C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D138A31AC59FEB00B83A6C /* FileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		52D1388D1AC59D9900B83A6C /* LilyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LilyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D138931AC59D9900B83A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52D138941AC59D9900B83A6C /* LilyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LilyTests.swift; sourceTree = "<group>"; };
+		52D1389E1AC59DBF00B83A6C /* Lily.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lily.swift; sourceTree = "<group>"; };
+		52D138A11AC59E8000B83A6C /* NSCache+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCache+Ex.swift"; sourceTree = "<group>"; };
+		52D138A31AC59FEB00B83A6C /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,9 @@
 			isa = PBXGroup;
 			children = (
 				52D138871AC59D9900B83A6C /* Lily.h */,
+				52D138A31AC59FEB00B83A6C /* FileManager.swift */,
+				52D138A11AC59E8000B83A6C /* NSCache+Ex.swift */,
+				52D1389E1AC59DBF00B83A6C /* Lily.swift */,
 				52D138851AC59D9900B83A6C /* Supporting Files */,
 			);
 			path = Lily;
@@ -209,6 +218,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52D138A41AC59FEB00B83A6C /* FileManager.swift in Sources */,
+				52D1389F1AC59DBF00B83A6C /* Lily.swift in Sources */,
+				52D138A21AC59E8000B83A6C /* NSCache+Ex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +333,7 @@
 		52D138991AC59D9900B83A6C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -330,12 +343,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		52D1389A1AC59D9900B83A6C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
