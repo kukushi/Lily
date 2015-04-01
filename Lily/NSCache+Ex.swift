@@ -69,12 +69,20 @@ public class CacheProxy {
         return cache.objectForKey(key)
     }
     
-    public var string: String {
-        return (object as? String) ?? ""
+    public var string: String? {
+        return object as? String
     }
     
-    public var data: NSData {
-        return (object as? NSData) ?? NSData()
+    public var stringValue: String {
+        return string ?? ""
+    }
+    
+    public var data: NSData? {
+        return object as? NSData
+    }
+    
+    public var dataValue: NSData {
+        return data ?? NSData()
     }
     
     public var number: NSNumber? {
@@ -85,19 +93,35 @@ public class CacheProxy {
         return object as? NSValue
     }
     
-    public var bool: Bool {
-        return (object as? Bool) ?? false
+    public var bool: Bool? {
+        return object as? Bool
     }
     
-    public var double: Double {
-        return number?.doubleValue ?? 0
+    public var boolValue: Bool? {
+        return bool ?? false
     }
     
-    public var float: Float {
-        return number?.floatValue ?? 0
+    public var double: Double? {
+        return number?.doubleValue
     }
     
-    public var int: Int {
-        return number?.integerValue ?? 0
+    public var doubleValue: Double {
+        return double ?? 0
+    }
+    
+    public var float: Float? {
+        return number?.floatValue
+    }
+    
+    public var floatValue: Float {
+        return float ?? 0
+    }
+    
+    public var int: Int? {
+        return number?.integerValue
+    }
+    
+    public var intValue: Int {
+        return int ?? 0
     }
 }

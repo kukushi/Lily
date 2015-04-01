@@ -12,7 +12,7 @@ import Foundation
 public extension Lily {
     public class MemoryCache {
         
-        lazy var caches: [String: NSCache] = ["Default": NSCache()]
+    lazy var caches: [String: NSCache] = ["Default": NSCache()]
         
         public init() {
             

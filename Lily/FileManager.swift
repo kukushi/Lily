@@ -36,7 +36,7 @@ class FileManager {
         return NSFileManager.defaultManager().removeItemAtPath(filePath, error: nil)
     }
     
-    class func itemsAtDirectory(directoryName: String) -> [AnyObject]! {
+    class func itemsAtDirectory(directoryName: String) -> [AnyObject]? {
         let filePath = path(filename: directoryName)
         if let URL = NSURL.fileURLWithPath(filePath) {
             var error: NSError?

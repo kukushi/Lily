@@ -8,10 +8,12 @@
 
 import Foundation
 
-let MemoryCache = Lily.shared.memoryCache
-let DiskCache = Lily.shared.diskCache
-let QuickCache = Lily.shared.quickCache
+public let MemoryCache = Lily.shared.memoryCache
+public let DiskCache = Lily.shared.diskCache
+public let QuickCache = Lily.shared.quickCache
 
+
+// MARK: Lily Class
 
 private let instance = Lily()
 
@@ -20,7 +22,7 @@ public class Lily {
         return instance
     }
     
-    lazy var memoryCache = NSCache()
+    lazy var memoryCache = MemoryCache()
     lazy var diskCache = DiskCache()
     lazy var quickCache = QuickCache()
     
@@ -36,53 +38,5 @@ public class Lily {
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-}
-
-extension Lily {
-    class DiskCache {
-        var cache = NSCache()
-    
-    }
-}
-
-
-extension Lily {
-    class QuickCache {
-        var cache = NSCache()
-        
-        // MARK:  Initialization
-        
-        init() {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "cacheToDisk", name: UIApplicationDidEnterBackgroundNotification, object: nil)
-        }
-        
-        deinit {
-            NSNotificationCenter.defaultCenter().removeObserver(self)
-        }
-        
-        func cacheToDisk() {
-            for key in cache.allKeys {
-                if let object: AnyObject = cache[key] {
-                    let data = NSKeyedArchiver.archivedDataWithRootObject(object)
-                    FileManager.write(data, filename: key)
-                }
-            }
-        }
-        
-        // MARK: 
-        
-        subscript(key: String) -> CacheProxy {
-            return CacheProxy(key, cache)
-        }
-        
-        subscript(key: String) -> AnyObject? {
-            get {
-                return self[key]
-            }
-            set {
-                cache[key] = newValue
-            }
-        }
     }
 }
