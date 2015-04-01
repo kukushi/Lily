@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		523E58BD1ACBE89700AC247E /* QuickCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523E58BC1ACBE89700AC247E /* QuickCache.swift */; };
+		523E58BF1ACBEBC300AC247E /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523E58BE1ACBEBC300AC247E /* DiskCache.swift */; };
 		524562441ACA774900A34D69 /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524562431ACA774900A34D69 /* MemoryCache.swift */; };
 		52D138881AC59D9900B83A6C /* Lily.h in Headers */ = {isa = PBXBuildFile; fileRef = 52D138871AC59D9900B83A6C /* Lily.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52D1388E1AC59D9900B83A6C /* Lily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D138821AC59D9900B83A6C /* Lily.framework */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		523E58BC1ACBE89700AC247E /* QuickCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickCache.swift; sourceTree = "<group>"; };
+		523E58BE1ACBEBC300AC247E /* DiskCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskCache.swift; sourceTree = "<group>"; };
 		524562431ACA774900A34D69 /* MemoryCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCache.swift; sourceTree = "<group>"; };
 		52D138821AC59D9900B83A6C /* Lily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Lily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D138861AC59D9900B83A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,10 +84,12 @@
 			isa = PBXGroup;
 			children = (
 				52D138871AC59D9900B83A6C /* Lily.h */,
-				524562431ACA774900A34D69 /* MemoryCache.swift */,
-				52D138A31AC59FEB00B83A6C /* FileManager.swift */,
-				52D138A11AC59E8000B83A6C /* NSCache+Ex.swift */,
 				52D1389E1AC59DBF00B83A6C /* Lily.swift */,
+				524562431ACA774900A34D69 /* MemoryCache.swift */,
+				523E58BC1ACBE89700AC247E /* QuickCache.swift */,
+				523E58BE1ACBEBC300AC247E /* DiskCache.swift */,
+				52D138A11AC59E8000B83A6C /* NSCache+Ex.swift */,
+				52D138A31AC59FEB00B83A6C /* FileManager.swift */,
 				52D138851AC59D9900B83A6C /* Supporting Files */,
 			);
 			path = Lily;
@@ -221,10 +227,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				523E58BD1ACBE89700AC247E /* QuickCache.swift in Sources */,
 				52D138A41AC59FEB00B83A6C /* FileManager.swift in Sources */,
 				524562441ACA774900A34D69 /* MemoryCache.swift in Sources */,
 				52D1389F1AC59DBF00B83A6C /* Lily.swift in Sources */,
 				52D138A21AC59E8000B83A6C /* NSCache+Ex.swift in Sources */,
+				523E58BF1ACBEBC300AC247E /* DiskCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
