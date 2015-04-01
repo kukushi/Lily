@@ -8,6 +8,9 @@
 
 import UIKit
 import XCTest
+import Lily
+
+let MemoryCache = Lily.MemoryCache()
 
 class LilyTests: XCTestCase {
     
@@ -23,7 +26,12 @@ class LilyTests: XCTestCase {
     
     func testExample() {
         // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+        
+        MemoryCache["1"] = 1
+        MemoryCache["1", "Another"] = 2
+        
+        XCTAssert(MemoryCache["1"].int == 1, "1")
+        XCTAssert(MemoryCache["1", "Another"].int == 2, "2")
     }
     
     func testPerformanceExample() {

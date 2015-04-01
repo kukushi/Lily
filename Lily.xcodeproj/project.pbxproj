@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		524562441ACA774900A34D69 /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524562431ACA774900A34D69 /* MemoryCache.swift */; };
 		52D138881AC59D9900B83A6C /* Lily.h in Headers */ = {isa = PBXBuildFile; fileRef = 52D138871AC59D9900B83A6C /* Lily.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52D1388E1AC59D9900B83A6C /* Lily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D138821AC59D9900B83A6C /* Lily.framework */; };
 		52D138951AC59D9900B83A6C /* LilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D138941AC59D9900B83A6C /* LilyTests.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		524562431ACA774900A34D69 /* MemoryCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCache.swift; sourceTree = "<group>"; };
 		52D138821AC59D9900B83A6C /* Lily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Lily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D138861AC59D9900B83A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52D138871AC59D9900B83A6C /* Lily.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lily.h; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				52D138871AC59D9900B83A6C /* Lily.h */,
+				524562431ACA774900A34D69 /* MemoryCache.swift */,
 				52D138A31AC59FEB00B83A6C /* FileManager.swift */,
 				52D138A11AC59E8000B83A6C /* NSCache+Ex.swift */,
 				52D1389E1AC59DBF00B83A6C /* Lily.swift */,
@@ -219,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52D138A41AC59FEB00B83A6C /* FileManager.swift in Sources */,
+				524562441ACA774900A34D69 /* MemoryCache.swift in Sources */,
 				52D1389F1AC59DBF00B83A6C /* Lily.swift in Sources */,
 				52D138A21AC59E8000B83A6C /* NSCache+Ex.swift in Sources */,
 			);
@@ -412,6 +416,7 @@
 				52D1389A1AC59D9900B83A6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		52D1389B1AC59D9900B83A6C /* Build configuration list for PBXNativeTarget "LilyTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +425,7 @@
 				52D1389D1AC59D9900B83A6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
