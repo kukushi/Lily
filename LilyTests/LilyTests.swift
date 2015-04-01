@@ -10,7 +10,7 @@ import UIKit
 import XCTest
 import Lily
 
-let MemoryCache = Lily.MemoryCache()
+
 
 class LilyTests: XCTestCase {
     
