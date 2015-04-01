@@ -15,7 +15,7 @@ let QuickCache = Lily.shared.quickCache
 
 private let instance = Lily()
 
-class Lily {
+public class Lily {
     class var shared: Lily {
         return instance
     }

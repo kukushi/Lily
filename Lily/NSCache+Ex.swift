@@ -12,7 +12,7 @@ private var NSCacheKeysKey: UInt8 = 0
 
 public extension NSCache {
     
-    var allKeys: Set<String> {
+    public var allKeys: Set<String> {
         return _allKeys
     }
     
@@ -34,11 +34,11 @@ public extension NSCache {
         removeAllObjects()
     }
     
-    subscript(key: String) -> CacheProxy {
+    public subscript(key: String) -> CacheProxy {
         return CacheProxy(key, self)
     }
     
-    subscript(key: String) -> AnyObject? {
+    public subscript(key: String) -> AnyObject? {
         get {
             return self[key]
         }
@@ -60,44 +60,44 @@ public class CacheProxy {
         self.cache = cache
     }
     
-    func remove() {
+    public func remove() {
         cache._allKeys.remove(key)
         cache.removeObjectForKey(key)
     }
     
-    var object: AnyObject? {
+    public var object: AnyObject? {
         return cache.objectForKey(key)
     }
     
-    var string: String {
+    public var string: String {
         return (object as? String) ?? ""
     }
     
-    var data: NSData {
+    public var data: NSData {
         return (object as? NSData) ?? NSData()
     }
     
-    var number: NSNumber? {
+    public var number: NSNumber? {
         return object as? NSNumber
     }
     
-    var value: NSValue? {
+    public var value: NSValue? {
         return object as? NSValue
     }
     
-    var bool: Bool {
+    public var bool: Bool {
         return (object as? Bool) ?? false
     }
     
-    var double: Double {
+    public var double: Double {
         return number?.doubleValue ?? 0
     }
     
-    var float: Float {
+    public var float: Float {
         return number?.floatValue ?? 0
     }
     
-    var int: Int {
+    public var int: Int {
         return number?.integerValue ?? 0
     }
 }
