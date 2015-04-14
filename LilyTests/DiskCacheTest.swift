@@ -24,17 +24,19 @@ class DiskCacheTest: XCTestCase {
     }
 
     func testExample() {
+        
         diskCache["1"] = 1
         
-        self.waitForExpectationsWithTimeout(2, handler: { (error) -> Void in
-            XCTAssert(error == nil, "Expection Error")
-            XCTAssert(self.diskCache["1"].int == 1, "Direct Read Value Fail")
-            self.diskCache["1"].fetch { object in
-                let valid = (object as! Int == 1) && (FileManager.fileExistsAtDirectory("Default/1"))
-                XCTAssert(valid, "fail")
-            }
-        })
+        XCTAssert(self.diskCache["1"].int == 1, "Direct Read Value Fail")
         
+        let expectation = expectationWithDescription("wait for clearing disk cache")
+        self.diskCache["1"].fetch { object in
+            let valid = (object as! Int == 1) && (FileManager.fileExistsAtDirectory("Default/1"))
+            XCTAssert(valid, "fail")
+            expectation.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(2, handler:nil)
     }
 
     func testPerformanceExample() {
