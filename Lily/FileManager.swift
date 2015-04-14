@@ -16,6 +16,10 @@ class FileManager {
         return basicURL.path! + "/\(filename)"
     }
     
+//    class func create() {
+//        NSFileManager.defaultManager().createDirectoryAtPath(<#path: String#>, withIntermediateDirectories: <#Bool#>, attributes: <#[NSObject : AnyObject]?#>, error: <#NSErrorPointer#>)
+//    }
+    
     class func write(data: NSData, filename: String) -> Bool {
         let filePath = path(filename: filename)
         return data.writeToFile(filePath, atomically: true)

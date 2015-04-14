@@ -12,11 +12,31 @@ public extension Lily {
     public class DiskCache {
         var memoryCache = MemoryCache()
         
+        public init () {
+            
+        }
+        
         public lazy var cacheQueue : dispatch_queue_t = {
             let queueName = "kukushi.Lily.Cache"
             let cacheQueue = dispatch_queue_create(queueName, nil)
             return cacheQueue
         }()
+        
+        // subscript with key
+        
+        public subscript(key: String) -> ValueProxy {
+            return self[key, "Default"]
+        }
+        
+        public subscript(key: String) -> AnyObject? {
+            get {
+                return self[key]
+            }
+            
+            set {
+                self[key, "Default"] = newValue
+            }
+        }
         
         public subscript(key: String, context: String) -> ValueProxy {
             let proxy = ValueProxy(key: key, context: context, cache: memoryCache)
@@ -32,7 +52,10 @@ public extension Lily {
                 memoryCache[key, context] = newValue
                 dispatch_async(cacheQueue, { () -> Void in
                     let data = NSKeyedArchiver.archivedDataWithRootObject(newValue!)
-                    FileManager.write(data, filename: "\(context)/\(key)")
+                    if !FileManager.fileExistsAtDirectory("\(context)") {
+//                        NSFileManager.defaultManager().create
+                    }
+                    let writingResult = FileManager.write(data, filename: "\(context)/\(key)")
                 })
             }
         }
@@ -47,6 +70,7 @@ public class ValueProxy {
     var cacheQueue: dispatch_queue_t!
     
     public typealias ValueProxyFetchResult = (object: AnyObject?) -> Void
+    public typealias ValueProxyRemoveResult = (success: Bool) -> Void
     
     init(key: String, context: String, cache: Lily.MemoryCache) {
         self.key = key
@@ -132,6 +156,13 @@ public class ValueProxy {
             })
         }
         
+    }
+    
+    public func remove(callback: ValueProxyRemoveResult? = nil) {
+        dispatch_async(cacheQueue, { () -> Void in
+            let result = FileManager.removeFileAtDirectory("\(self.context)/\(self.key)")
+            callback?(success: result)
+        })
     }
 }
 
