@@ -53,8 +53,9 @@ public extension Lily {
                 dispatch_async(cacheQueue, { () -> Void in
                     let data = NSKeyedArchiver.archivedDataWithRootObject(newValue!)
                     if !FileManager.fileExistsAtDirectory("\(context)") {
-//                        NSFileManager.defaultManager().create
+                        FileManager.create("\(context)")
                     }
+                    
                     let writingResult = FileManager.write(data, filename: "\(context)/\(key)")
                 })
             }
