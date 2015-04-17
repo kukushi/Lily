@@ -1,6 +1,6 @@
 //
 //  FileManager.swift
-//  BangumiKit
+//  Lily
 //
 //  Created by kukushi on 9/7/14.
 //  Copyright (c) 2014 kukushi. All rights reserved.
