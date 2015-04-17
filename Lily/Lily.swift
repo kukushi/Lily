@@ -8,12 +8,13 @@
 
 import Foundation
 
+/// Some global instance for quick access
 public let MemoryCache = Lily.shared.memoryCache
 public let DiskCache = Lily.shared.diskCache
 public let QuickCache = Lily.shared.quickCache
 
 
-// MARK: Lily Class
+// MARK: Lily Main Class
 
 private let instance = Lily()
 
@@ -26,17 +27,19 @@ public class Lily {
     lazy var diskCache = DiskCache()
     lazy var quickCache = QuickCache()
     
-    // MARK:
+    // MARK: Initialization
     
     init() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "memoryWarningReceived", name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
     }
     
-    func memoryWarningReceived() {
-        memoryCache.removeAll()
-    }
-    
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    // MARK:
+    
+    func memoryWarningReceived() {
+        memoryCache.removeAll()
     }
 }

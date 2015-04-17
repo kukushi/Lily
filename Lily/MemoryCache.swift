@@ -14,13 +14,23 @@ public extension Lily {
         
     lazy var caches: [String: NSCache] = ["Default": NSCache()]
         
+        // MARK: Initialization
+        
         public init() {
             
         }
         
         // MARK: Subscript
         
-        // suscript with context and key
+        /**
+        subscript with context and key
+        
+        :param: key     the key of cache
+        :param: context the context of cache
+        
+        :returns: a cache proxy with named key and context. You don't have to use
+        it directly.
+        */
         public subscript(key: String, context: String) -> CacheProxy {
             if caches[context] == nil {
                 caches[context] = NSCache()
@@ -44,8 +54,14 @@ public extension Lily {
             }
         }
         
-        // subscript with key
+        /**
+        subscript with key only
         
+        :param: key the key of cache
+        
+        :returns: a cache proxy with named key and default context. You don't have to use
+        it directly
+        */
         public subscript(key: String) -> CacheProxy {
             return self[key, "Default"]
         }
@@ -61,6 +77,11 @@ public extension Lily {
             }
         }
         
+        // MARK:
+        
+        /**
+        Remove all items in cache.
+        */
         public func removeAll() {
             for cache in caches.values {
                 cache.removeAll()
