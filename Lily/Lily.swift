@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Some global instance for quick access
+/// Some global instance for quick access 
 public let MemoryCache = Lily.shared.memoryCache
 public let DiskCache = Lily.shared.diskCache
 public let QuickCache = Lily.shared.quickCache
@@ -18,7 +18,7 @@ public let QuickCache = Lily.shared.quickCache
 
 private let instance = Lily()
 
-public class Lily {
+public class Lily: NSObject {
     class var shared: Lily {
         return instance
     }
@@ -29,7 +29,8 @@ public class Lily {
     
     // MARK: Initialization
     
-    init() {
+    override init() {
+        super.init()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "memoryWarningReceived", name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
     }
     
