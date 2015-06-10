@@ -10,21 +10,24 @@ import Foundation
 
 class FileManager {
     
-    class func path(#filename: String) -> String {
+    class func path(filename: String) -> String {
         let fileManager = NSFileManager.defaultManager()
-        let basicURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains:.UserDomainMask).first as! NSURL
+        let basicURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains:.UserDomainMask).first!
         return basicURL.path! + "/\(filename)"
     }
     
     class func create(filename: String) {
-        let filePath = path(filename: filename)
+        let filePath = path(filename)
         if !fileExistsAtDirectory(filePath) {
-            NSFileManager.defaultManager().createDirectoryAtPath(filePath, withIntermediateDirectories: false, attributes: nil, error: nil)
+            do {
+                try NSFileManager.defaultManager().createDirectoryAtPath(filePath, withIntermediateDirectories: false, attributes: nil)
+            } catch _ {
+            }
         }
     }
     
     class func write(data: NSData, filename: String) -> Bool {
-        let filePath = path(filename: filename)
+        let filePath = path(filename)
         return data.writeToFile(filePath, atomically: true)
     }
     
@@ -34,44 +37,55 @@ class FileManager {
     }
     
     class func fileExistsAtDirectory(filename: String) -> Bool {
-        let filePath = path(filename: filename)
+        let filePath = path(filename)
         return NSFileManager.defaultManager().fileExistsAtPath(filePath)
     }
     
     class func removeFileAtDirectory(filename: String) -> Bool {
-        let filePath = path(filename: filename)
-        return NSFileManager.defaultManager().removeItemAtPath(filePath, error: nil)
+        let filePath = path(filename)
+        do {
+            try NSFileManager.defaultManager().removeItemAtPath(filePath)
+            return true
+        } catch _ {
+            return false
+        }
     }
     
     class func itemsAtDirectory(directoryName: String) -> [AnyObject]? {
-        let filePath = path(filename: directoryName)
-        if let URL = NSURL.fileURLWithPath(filePath) {
-            var error: NSError?
-            let fileManager = NSFileManager.defaultManager()
-            if let contents = fileManager.contentsOfDirectoryAtURL(URL, includingPropertiesForKeys: [AnyObject](), options: .SkipsSubdirectoryDescendants, error: &error) as? [NSURL] {
-                if let theError = error {
-                    var items = [AnyObject]()
-                    for url in contents {
-                        let data = NSData(contentsOfURL: url, options: .DataReadingMappedIfSafe, error: &error)
-                        if let theError = error {
-                            let obj: AnyObject! = NSKeyedUnarchiver.unarchiveObjectWithData(data!)
-                            items.append(obj)
-                        }
-                    }
-                    return items
+        let filePath = path(directoryName)
+        let URL = NSURL.fileURLWithPath(filePath)
+        let fileManager = NSFileManager.defaultManager()
+        
+        do {
+            let contents = try fileManager.contentsOfDirectoryAtURL(URL, includingPropertiesForKeys: [String](), options: .SkipsSubdirectoryDescendants)
+            
+            var items = [AnyObject]()
+            for url in contents {
+                do {
+                    let data = try NSData(contentsOfURL: url, options: .DataReadingMappedIfSafe)
+                    let obj: AnyObject! = NSKeyedUnarchiver.unarchiveObjectWithData(data)
+                    items.append(obj)
+                } catch let error {
+                    print(error)
+                    return nil
                 }
             }
+            return items
+        } catch let error {
+            print(error)
+            return nil
         }
-        return nil
     }
     
-    class func deleteFile(filename: String, error: NSErrorPointer) -> Bool {
+    class func deleteFile(filename: String) throws {
+        let error: NSError! = NSError(domain: "Migrator", code: 0, userInfo: nil)
         let fileManager = NSFileManager.defaultManager()
-        let filePath = path(filename: filename)
-        if !fileManager.removeItemAtPath(filename, error: error) {
-            println("\(error)")
-            return true
+        do {
+            try fileManager.removeItemAtPath(filename)
+        } catch let error1 as NSError {
+            print("\(error1)")
+            return
         }
-        return false
+        throw error
     }
 }

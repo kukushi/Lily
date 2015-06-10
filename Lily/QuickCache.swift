@@ -26,7 +26,7 @@ public extension Lily {
         // MARK: Cache
         
         func cacheToDisk() {
-            for (_, (_, cache)) in enumerate(memoryCache.caches) {
+            for (_, (_, cache)) in memoryCache.caches.enumerate() {
                 for key in cache.allKeys {
                     if let object: AnyObject = cache[key] {
                         let data = NSKeyedArchiver.archivedDataWithRootObject(object)
