@@ -56,7 +56,7 @@ public extension Lily {
                         FileManager.create("\(context)")
                     }
                     
-                    let writingResult = FileManager.write(data, filename: "\(context)/\(key)")
+                    FileManager.write(data, filename: "\(context)/\(key)")
                 })
             }
         }
