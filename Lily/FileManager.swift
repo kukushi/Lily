@@ -49,17 +49,24 @@ class FileManager {
             var error: NSError?
             let fileManager = NSFileManager.defaultManager()
             if let contents = fileManager.contentsOfDirectoryAtURL(URL, includingPropertiesForKeys: [AnyObject](), options: .SkipsSubdirectoryDescendants, error: &error) as? [NSURL] {
+                
                 if let theError = error {
-                    var items = [AnyObject]()
-                    for url in contents {
-                        let data = NSData(contentsOfURL: url, options: .DataReadingMappedIfSafe, error: &error)
-                        if let theError = error {
-                            let obj: AnyObject! = NSKeyedUnarchiver.unarchiveObjectWithData(data!)
-                            items.append(obj)
-                        }
-                    }
-                    return items
+                    println(theError)
+                    return nil
                 }
+                
+                var items = [AnyObject]()
+                for url in contents {
+                    let data = NSData(contentsOfURL: url, options: .DataReadingMappedIfSafe, error: &error)
+                    if let theError = error {
+                        println(theError)
+                    }
+                    else {
+                        let obj: AnyObject! = NSKeyedUnarchiver.unarchiveObjectWithData(data!)
+                        items.append(obj)
+                    }
+                }
+                return items
             }
         }
         return nil

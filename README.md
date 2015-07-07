@@ -96,3 +96,7 @@ let poiYou = MemoryCache["poi", "You"].stringValue
 ## License
 
 Lily is released under the MIT license. See LICENSE for details.
+
+## Contact
+
+* [Telegram](https://telegram.org): [@kukushi](http://telegram.me/kukushi)
