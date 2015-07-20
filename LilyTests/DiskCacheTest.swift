@@ -6,9 +6,8 @@
 //  Copyright (c) 2015 kukushi. All rights reserved.
 //
 
-import UIKit
 import XCTest
-import Lily
+@testable import Lily
 
 class DiskCacheTest: XCTestCase {
     
