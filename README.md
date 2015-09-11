@@ -4,7 +4,7 @@
 ![License](https://img.shields.io/cocoapods/l/Lily.svg?style=flat)
 ![Platform](https://img.shields.io/cocoapods/p/Lily.svg?style=flat)
 
-Lily is lightweight swift cache framework.
+Lily is a lightweight swift cache framework.
 
 ## Features
 
@@ -26,20 +26,13 @@ pod 'Lily'
 
 ### Carthage
 
-[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager for Cocoa application. To install the carthage tool, you can use [Homebrew](http://brew.sh).
-
-```bash
-$ brew update
-$ brew install carthage
-```
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager for Cocoa application.
 
 To integrate Lily into your Xcode project using CocoaPods, specify it in your `Cartfile`:
 
 ```ogdl
 github "kukushi/Lily" >= 0.1
 ```
-
-For more information about how to use Carthage, pleasee see its [project page](https://github.com/Carthage/Carthage).
 
 ### Manually
 
@@ -91,7 +84,7 @@ let poiYou = MemoryCache["poi", "You"].stringValue
 ## Requirements
 
 * iOS 8.0 or later
-* Xcode 6.3 or later
+* Xcode 7.0 or later
 
 ## License
 

@@ -56,7 +56,7 @@ public extension Lily {
                         FileManager.create("\(context)")
                     }
                     
-                    let writingResult = FileManager.write(data, filename: "\(context)/\(key)")
+                    FileManager.write(data, filename: "\(context)/\(key)")
                 })
             }
         }
@@ -150,7 +150,7 @@ public class ValueProxy {
         }
         else {
             dispatch_async(cacheQueue, { () -> Void in
-                let path = FileManager.path(filename: "\(self.context)/\(self.key)")
+                let path = FileManager.path("\(self.context)/\(self.key)")
                 if let data = NSData(contentsOfFile: path), object: AnyObject = NSKeyedUnarchiver.unarchiveObjectWithData(data) {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         callback(object: object)

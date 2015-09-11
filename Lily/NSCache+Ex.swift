@@ -26,7 +26,7 @@ public extension NSCache {
             return keys!
         }
         set(newValue) {
-            objc_setAssociatedObject(self, &NSCacheKeysKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
+            objc_setAssociatedObject(self, &NSCacheKeysKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
         }
     }
     

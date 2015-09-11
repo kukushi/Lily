@@ -25,10 +25,10 @@ public extension Lily {
         /**
         subscript with context and key
         
-        :param: key     the key of cache
-        :param: context the context of cache
+        - parameter key:     the key of cache
+        - parameter context: the context of cache
         
-        :returns: a cache proxy with named key and context. You don't have to use
+        - returns: a cache proxy with named key and context. You don't have to use
         it directly.
         */
         public subscript(key: String, context: String) -> CacheProxy {
@@ -57,9 +57,9 @@ public extension Lily {
         /**
         subscript with key only
         
-        :param: key the key of cache
+        - parameter key: the key of cache
         
-        :returns: a cache proxy with named key and default context. You don't have to use
+        - returns: a cache proxy with named key and default context. You don't have to use
         it directly
         */
         public subscript(key: String) -> CacheProxy {
