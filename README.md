@@ -65,7 +65,7 @@ let poi = MemoryCache["poi"].intValue
 
 // If you want to do something in other context, just add other key.
 
-// save integer 1 with "poi" key in the "You" context
+// save string "poi" with "poi" key in the "You" context
 MemoryCache["poi", "You"] = "Poi"
 
 // retrive the content of "poi" key in the "You" context
