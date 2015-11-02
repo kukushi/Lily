@@ -31,7 +31,7 @@ pod 'Lily'
 To integrate Lily into your Xcode project using CocoaPods, specify it in your `Cartfile`:
 
 ```ogdl
-github "kukushi/Lily" >= 0.1
+github "kukushi/Lily"
 ```
 
 ### Manually
@@ -57,16 +57,16 @@ $ git submodule add https://github.com/kukushi/Lily.git
 MemoryCache cache in the memory level. When the App is terminated, all is gone.
 
 ```swift
-// save integer 1 with "poi" key in the default context
+// Save integer 1 with key "poi" in the default context using the memory cache
 MemoryCache["poi"] = 1
 
-// retrive the content of "poi" key in the default context
+// Retrive the content with key "poi" in the default context from the memory cache
 let poi = MemoryCache["poi"].intValue
 
 // If you want to do something in other context, just add other key.
 
-// save string "poi" with "poi" key in the "You" context
-MemoryCache["poi", "You"] = "Poi"
+// Save string "hey" with "poi" key in the "You" context
+MemoryCache["poi", "You"] = "hey"
 
 // retrive the content of "poi" key in the "You" context
 let poiYou = MemoryCache["poi", "You"].stringValue
@@ -75,11 +75,11 @@ let poiYou = MemoryCache["poi", "You"].stringValue
 
 ### Cache Types
 
-`MemoryCache` do it's work in the memory level. When the App is terminated, all content will be removed.  
+`MemoryCache` do it's work on the memory level. When the App is terminated, all the content will be removed.  
 
 `QuickCache` is base on `MemoryCache`. It'll write all the content into disk in the right time at a whole.
 
-`DiskCache` is base on `MemoryCache`, too. It do the disk level cache every time you set content for a key.
+`DiskCache` is base on `MemoryCache`, too. It do the disk level cache every time you modify content for a key.
 
 ## Requirements
 
