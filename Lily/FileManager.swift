@@ -16,12 +16,14 @@ class FileManager {
         return basicURL.path! + "/\(filename)"
     }
     
-    class func create(filename: String) {
+    class func create(filename: String) throws {
         let filePath = path(filename)
         if !fileExistsAtDirectory(filePath) {
             do {
                 try NSFileManager.defaultManager().createDirectoryAtPath(filePath, withIntermediateDirectories: false, attributes: nil)
-            } catch _ {
+            }
+            catch let error as NSError {
+                throw error
             }
         }
     }
@@ -45,10 +47,10 @@ class FileManager {
         let filePath = path(filename)
         do {
             try NSFileManager.defaultManager().removeItemAtPath(filePath)
-            return true
         } catch _ {
             return false
         }
+        return true
     }
     
     class func itemsAtDirectory(directoryName: String) -> [AnyObject]? {
@@ -79,14 +81,12 @@ class FileManager {
     }
     
     class func deleteFile(filename: String) throws {
-        let error: NSError! = NSError(domain: "Migrator", code: 0, userInfo: nil)
         let fileManager = NSFileManager.defaultManager()
         do {
             try fileManager.removeItemAtPath(filename)
-        } catch let error1 as NSError {
-            print("\(error1)")
-            return
         }
-        throw error
+        catch let error as NSError {
+            throw error
+        }
     }
 }

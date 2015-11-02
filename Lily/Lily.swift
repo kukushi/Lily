@@ -19,6 +19,7 @@ public let QuickCache = Lily.shared.quickCache
 private let instance = Lily()
 
 public class Lily: NSObject {
+    // MARK: Singleton
     class var shared: Lily {
         return instance
     }
