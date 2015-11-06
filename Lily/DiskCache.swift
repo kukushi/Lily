@@ -22,7 +22,7 @@ public extension Lily {
             return cacheQueue
         }()
         
-        // subscript with key
+        // Subscript with key
         
         public subscript(key: String) -> ValueProxy {
             return self[key, "Default"]
@@ -53,7 +53,12 @@ public extension Lily {
                 dispatch_async(cacheQueue, { () -> Void in
                     let data = NSKeyedArchiver.archivedDataWithRootObject(newValue!)
                     if !FileManager.fileExistsAtDirectory("\(context)") {
-                        FileManager.create("\(context)")
+                        do {
+                            try FileManager.create("\(context)")
+                        }
+                        catch let error as NSError {
+                            print(error)
+                        }
                     }
                     
                     FileManager.write(data, filename: "\(context)/\(key)")
@@ -84,8 +89,14 @@ public class ValueProxy {
             return object
         }
         
-        let object = FileManager.itemsAtDirectory("\(context)/\(key)")
-        return object
+        do {
+            let object = try FileManager.itemsAtDirectory("\(context)/\(key)")
+            return object
+        }
+        catch let error {
+            print(error)
+            return nil
+        }
     }
     
     public var string: String? {
@@ -163,9 +174,14 @@ public class ValueProxy {
     
     public func remove(callback: ValueProxyRemoveResult? = nil) {
         dispatch_async(cacheQueue, { () -> Void in
-            let result = FileManager.removeFileAtDirectory("\(self.context)/\(self.key)")
-            callback?(success: result)
+            do {
+                try FileManager.removeFileAtDirectory("\(self.context)/\(self.key)")
+                callback?(success: true)
+            }
+            catch let error {
+                print(error)
+                callback?(success: false)
+            }
         })
     }
 }
-

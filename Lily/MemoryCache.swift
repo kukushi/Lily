@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public extension Lily {
     public class MemoryCache {
         

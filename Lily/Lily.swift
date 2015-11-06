@@ -25,7 +25,9 @@ public class Lily: NSObject {
     }
     
     lazy var memoryCache = MemoryCache()
+    
     lazy var diskCache = DiskCache()
+    
     lazy var quickCache = QuickCache()
     
     // MARK: Initialization
