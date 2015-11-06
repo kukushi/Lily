@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author             = { "Xing He" => "" }
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/kukushi/Lily.git", :tag => "$s.version" }
+  s.source       = { :git => "https://github.com/kukushi/Lily.git", :tag => s.version }
   s.source_files  = "Classes", "Classes/**/*.{h,m}", "Lily/*.{h,m,swift}"
   s.exclude_files = "Classes/Exclude"
   s.requires_arc = true
