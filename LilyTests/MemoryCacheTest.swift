@@ -14,6 +14,8 @@ class MemoryCacheTest: XCTestCase {
     
     var memoryCache: Lily.MemoryCache!
 
+    // MARK: Setup
+    
     override func setUp() {
         super.setUp()
         memoryCache = Lily.MemoryCache()
@@ -22,20 +24,22 @@ class MemoryCacheTest: XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
+    
+    // MARK:
 
-    func testIntStorageExample() {
+    func testCacheInt() {
         
         memoryCache["1"] = 1
-        XCTAssert(memoryCache["1"].int == 1, "Int Storage Pass")
+        XCTAssert(memoryCache["1"].int == 1)
         
-        XCTAssert(memoryCache["2"].int == nil, "Unexsit Storage Pass")
-        XCTAssert(memoryCache["2"].intValue == 0, "Unexsit Storage Default Value Pass")
+        XCTAssert(memoryCache["2"].int == nil)
+        XCTAssert(memoryCache["2"].intValue == 0)
         
         memoryCache["1"].remove()
-        XCTAssert(memoryCache["1"].int == nil, "Remove Int Storage Pass")
+        XCTAssert(memoryCache["1"].int == nil)
     }
     
-    func testBoolStorageExample() {
+    func testCacheBool() {
         
         memoryCache["True"] = true
         XCTAssert(memoryCache["True"].bool == true, "True Storage Pass")
@@ -58,12 +62,4 @@ class MemoryCacheTest: XCTestCase {
         memoryCache["1.0"].remove()
         XCTAssert(memoryCache["1.0"].bool == nil, "Remove Int Storage Pass")
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
