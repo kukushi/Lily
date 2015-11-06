@@ -62,4 +62,24 @@ class MemoryCacheTest: XCTestCase {
         memoryCache["1.0"].remove()
         XCTAssert(memoryCache["1.0"].bool == nil, "Remove Int Storage Pass")
     }
+    
+    func testCacheObject() {
+        let object = NSObject()
+        memoryCache["object"] = object
+        XCTAssert(memoryCache["object"].object as! NSObject == object)
+    }
+    
+    func testCacheArray() {
+        let object = NSObject()
+        let array = [object]
+        memoryCache["objectarray"] = array
+        XCTAssert(memoryCache["objectarray"].object as! [NSObject] == array)
+    }
+    
+    func testCacheDictionary() {
+        let object = NSObject()
+        let dict = ["object": object]
+        memoryCache["objectdictionary"] = dict
+        XCTAssert(memoryCache["objectdictionary"].object as! [String: NSObject] == dict)
+    }
 }
