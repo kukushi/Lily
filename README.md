@@ -14,7 +14,7 @@ Lily is a lightweight swift cache framework.
 ## Installation
 ### CocoaPods
 
-In your Podfile (note that it require Cocoapods 0.36 or later):
+In your Podfile (note that it require CocoaPods 0.36 or later):
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
