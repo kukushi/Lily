@@ -16,7 +16,7 @@ public extension Lily {
         // MARK: Initialization
         
         init() {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "cacheToDisk", name: UIApplicationDidEnterBackgroundNotification, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QuickCache.cacheToDisk), name: UIApplicationDidEnterBackgroundNotification, object: nil)
         }
         
         deinit {
@@ -25,7 +25,7 @@ public extension Lily {
         
         // MARK: Cache
         
-        func cacheToDisk() {
+        @objc public func cacheToDisk() {
             for (_, (_, cache)) in memoryCache.caches.enumerate() {
                 for key in cache.allKeys {
                     if let object: AnyObject = cache[key] {

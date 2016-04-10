@@ -34,7 +34,7 @@ public class Lily: NSObject {
     
     override init() {
         super.init()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "memoryWarningReceived", name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(Lily.memoryWarningReceived), name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
     }
     
     deinit {
